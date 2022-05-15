@@ -40,25 +40,25 @@ jobs:
           npm test
         env:
           CI: true
-
-Build-and-Push-Docker-Image:
-  runs-on: ubuntu-latest
-  needs: test
-  name: Docker buid, tag, push
-  
-  steps:
-  - name: Checkout
-    uses: actions/checkout@v1
-  - name: Download build artifact
-    uses: actions/download-artifact@main
-    with:
-      name: webpack artifacts
-      path: public
-  - name: Build container image
-    uses: docker/build-push-action@v1
-    with:
-      username: ${{ github.actor }}
-      password: ${{ secrets.PAT_TOKEN }}
-      registry: docker.pkg.github.com
-      repository: luziandrade/Logbook3_DevOps/tic-tac-toe
-      tag_with_sha: true
+          
+  Build-and-Push-Docker-Image:
+    runs-on: ubuntu-latest
+    needs: test
+    name: Docker Build, Tag, Push
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Download build artifact
+      uses: actions/download-artifact@main
+      with:
+        name: webpack artifacts
+        path: public
+    - name: Build container image
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{github.actor}}
+        password: ${{secrets.PAT_TOKEN}}
+        registry: docker.pkg.github.com
+        repository: luziandrade/Logbook3_DevOps/tic-tac-toe2
+        tag_with_sha: true
