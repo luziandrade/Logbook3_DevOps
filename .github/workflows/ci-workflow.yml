@@ -48,14 +48,14 @@ Build-and-Push-Docker-Image:
   
   steps:
   - name: Checkout
-    uses: actions/checkout@v2
+    uses: actions/checkout@v1
   - name: Download build artifact
     uses: actions/download-artifact@main
     with:
       name: webpack artifacts
       path: public
   - name: Build container image
-    uses: docker/build-push-action@v2
+    uses: docker/build-push-action@v1
     with:
       username: ${{ github.actor }}
       password: ${{ secrets.GITHUB_TOKEN }}
