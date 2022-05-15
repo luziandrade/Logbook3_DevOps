@@ -1,3 +1,4 @@
-#Dockerfile
-FROM ngingx:1.19
-COPY ./usr/share/nginx/html
+
+# Our Dockerfile
+FROM nginx:1.19
+COPY . /usr/share/nginx/html
